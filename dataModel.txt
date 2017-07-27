@@ -1,0 +1,15 @@
+Student
+	has_and_belongs_to_many :objectives
+	has_many: scores
+
+Objective
+	has_and_belongs_to_many :students
+	has_many :scores
+
+Score
+	belongs_to :student
+	belongs_to :objective
+	belongs_to :subject
+
+Subject
+	has_many :scores 
