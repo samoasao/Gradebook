@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  = @student.name
+%strong Objectives
+%ul
+  -@student.objectives.each do |obj|
+    %li=obj.description
+
+= link_to 'Add Objective', '#'
+|
+= link_to 'Edit', edit_student_path(@student)
+|
+= link_to 'Back', students_path
