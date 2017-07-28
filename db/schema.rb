@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727063722) do
+ActiveRecord::Schema.define(version: 20170728221614) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "student_id"
@@ -27,19 +27,21 @@ ActiveRecord::Schema.define(version: 20170727063722) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "objectives_students", force: :cascade do |t|
-    t.integer "objective_id"
-    t.integer "student_id"
-    t.index ["objective_id", "student_id"], name: "index_objectives_students_on_objective_id_and_student_id"
+  create_table "schedule_items", force: :cascade do |t|
+    t.date "day"
+    t.integer "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.time "time"
+    t.index ["subject_id"], name: "index_schedule_items_on_subject_id"
   end
 
   create_table "scores", force: :cascade do |t|
     t.integer "value"
-    t.datetime "day"
     t.integer "assignment_id"
-    t.integer "subject_id"
+    t.integer "schedule_item_id"
     t.index ["assignment_id"], name: "index_scores_on_assignment_id"
-    t.index ["subject_id"], name: "index_scores_on_subject_id"
+    t.index ["schedule_item_id"], name: "index_scores_on_schedule_item_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -50,7 +52,6 @@ ActiveRecord::Schema.define(version: 20170727063722) do
 
   create_table "subjects", force: :cascade do |t|
     t.string "name"
-    t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
