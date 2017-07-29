@@ -13,5 +13,14 @@
  */
 
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+.mtb-15{margin-top: 15px; margin-bottom: 15px;}
+.ptb-15{padding-top: 15px; padding-bottom:  15px;}
+
+.chevron{
+	font-size: 30px;
+}

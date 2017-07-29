@@ -1,0 +1,17 @@
+.text-center
+  .h2
+
+    =link_to (fa_icon "chevron-left"), "#"
+    Today, 
+    = Date.today.strftime("%B %u, %Y")
+    =link_to (fa_icon "chevron-right"), "#"
+
+  = form_tag do 
+    %select{:onchange => "this.form.submit()"}
+      -@subjects.each do |s|
+        %option
+          =s.name
+        
+-if @students 
+  =@students.first.name
+  = fa_icon "camera-retro"

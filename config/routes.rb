@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   	resources :assignments
   end
 
+  
+
+  get '/dashboard', to: 'students#dashboard', as: 'dashboard'
+  post '/dashboard', to: 'students#getScores'
 
 
-  root "students#index"
+  root "students#dashboard"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

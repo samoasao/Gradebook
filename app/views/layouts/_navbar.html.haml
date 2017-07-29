@@ -10,11 +10,19 @@
       %a.navbar-brand{:href => root_path} Gradebook
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li
-          %a{:href => "#"} Link
       %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"href" => "#", "data-toggle" => "dropdown", "role" => "button", "aria-haspopup" => "true", "aria-expanded" => "false"} 
+            Admin
+            %span.caret
+          %ul.dropdown-menu
+            %li 
+              = link_to "Students", students_path
+            %li 
+              = link_to "Objectives", objectives_path
+            %li 
+              = link_to "Subjects", subjects_path
         %li
-          %a{:href => "#"} Link
+          %a{:href => "#"} Reports
         %li
-          %a{:href => "#"} Link
+          %a{:href => "#"} Logout
