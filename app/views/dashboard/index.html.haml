@@ -6,12 +6,43 @@
     = Date.today.strftime("%B %u, %Y")
     =link_to (fa_icon "chevron-right"), "#"
 
-  = form_tag do 
-    %select{:onchange => "this.form.submit()"}
-      -@subjects.each do |s|
-        %option
-          =s.name
+    / TODO: add attributes to this to bootstrap and make it change on command
+  = form_tag do
+    -if @selected_subject
+      = collection_select(:subject, :id, Subject.all, :id, :name, {:selected => @selected_subject.id, :onchange => "this.form.submit()"})
+    -else
+      = collection_select(:subject, :id, Subject.all, :id, :name, {:onchange => "this.form.submit()"})
+    = submit_tag("Display",  {:class=>"btn"}) 
+  
         
--if @students 
-  =@students.first.name
-  = fa_icon "camera-retro"
+-if @selected_subject 
+  .table-responsive
+    %table.table
+      %thead
+        %tr
+          %td Name
+          %td Objective
+          %td Score
+      %tbody
+        - @students.each do |s|
+          - objCount = s.objectives.count
+          %tr
+            %td.h4{:rowspan => "#{objCount}"}
+              = s.name
+            -s.objectives.each do |o|
+              -if o != s.objectives.first
+                %tr
+                  %td 
+                    =o.description
+                  %td 
+                    =o.id
+              -else
+                %td 
+                  =o.description
+                %td 
+                  =o.id
+  %button.btn
+    Record Scores
+
+            
+          
