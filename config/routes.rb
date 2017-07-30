@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "dashboard#index"
   resources :scores
   resources :subjects
   resources :objectives do
@@ -10,10 +11,11 @@ Rails.application.routes.draw do
 
   
 
-  get '/dashboard', to: 'students#dashboard', as: 'dashboard'
-  post '/dashboard', to: 'students#getScores'
+  get '/dashboard', to: 'dashboard#index', as: 'dashboard'
+  post '/dashboard', to: 'dashboard#getScores'
+  post '/', to: 'dashboard#getScores'
 
 
-  root "students#dashboard"
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

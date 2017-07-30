@@ -7,19 +7,7 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
-  #GET /dashboard
-  def dashboard
-    # @students = Student.all
-    @subjects = Subject.all
-  end
-
-  #POST /dashboard
-  def getScores
-    @students = Student.all
-    @subjects = Subject.all
-    puts "ok now"
-    render "students/dashboard"
-  end
+  
 
   # GET /students/1
   # GET /students/1.json
