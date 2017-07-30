@@ -1,9 +1,9 @@
 class DashboardController < ApplicationController
   #GET /dashboard
   def index
-    # @students = Student.all
     @subjects = Subject.all
-
+    @students = Student.all
+    @selected_subject = Subject.first
   end
 
   #POST /dashboard
