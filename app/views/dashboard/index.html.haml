@@ -2,8 +2,8 @@
   .h2
 
     =link_to (fa_icon "chevron-left"), "#"
-    Today, 
-    = Date.today.strftime("%B %u, %Y")
+  
+    = Date.today.strftime("%A, %B %u, %Y")
     =link_to (fa_icon "chevron-right"), "#"
 
     / TODO: add attributes to this to bootstrap and make it change on command
@@ -12,15 +12,15 @@
       = collection_select(:subject, :id, Subject.all, :id, :name, {:selected => @selected_subject.id, :onchange => "this.form.submit()"})
     -else
       = collection_select(:subject, :id, Subject.all, :id, :name, {:onchange => "this.form.submit()"})
-    = submit_tag("Display",  {:class=>"btn"}) 
+    = submit_tag("Display",  {:class=>"btn btn-default"}) 
   
         
 -if @selected_subject 
   .table-responsive
-    %table.table
+    %table.table.table-bordered
       %thead
         %tr
-          %td Name
+          %td.h5 Student Name
           %td Objective
           %td Score
       %tbody
@@ -28,19 +28,13 @@
           - objCount = s.objectives.count
           %tr
             %td.h4{:rowspan => "#{objCount}"}
-              = s.name
+              = link_to s.name, student_path(s.id)
             -s.objectives.each do |o|
               -if o != s.objectives.first
                 %tr
-                  %td 
-                    =o.description
-                  %td 
-                    =o.id
+                  = render 'score', o: o
               -else
-                %td 
-                  =o.description
-                %td 
-                  =o.id
+                = render 'score', o: o
   %button.btn-lg.btn-success
     Record Scores
 
