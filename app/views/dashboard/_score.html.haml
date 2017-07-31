@@ -1,12 +1,33 @@
-%td 
-	=o.description
-%td.text-center 
-	.btn-group-lg{:role => "group#{o.id}", :aria-label=> "#{o.id}"}
-		%button.btn.btn-default{:type => "button"}
-			1
-		%button.btn.btn-default{:type => "button"}
-			2
-		%button.btn.btn-default{:type => "button"}
-			3
-		%button.btn.btn-default{:type => "button", :autofocus=>"true"}
-			4
+/
+  \%td
+  \=o.description
+  \%td.text-center
+  \.btn-group{:data-toggle =>"buttons"}
+  \%label.btn.btn-default
+  \%input#option1{:type=>"radio", :name=>"options", :autocomplete=>"off"}
+  1
+  \%label.btn.btn-default
+  \%input#option1{:type=>"radio", :name=>"options", :autocomplete=>"off"}
+  2
+  \%label.btn.btn-default
+  \%input#option1{:type=>"radio", :name=>"options", :autocomplete=>"off"}
+  3
+  \%label.btn.btn-default.active
+  \%input#option1{:type=>"radio", :name=>"options", :autocomplete=>"off", :checked=>"true"}
+  4
+%td
+  = o.description
+%td.text-center
+  .btn-group-lg{"data-toggle" => "buttons"}
+    %label.btn.btn-default
+      %input#option1{:autocomplete => "off", :name => "options", :type => "radio"}/
+      1
+    %label.btn.btn-default
+      %input#option1{:autocomplete => "off", :name => "options", :type => "radio"}/
+      2
+    %label.btn.btn-default
+      %input#option1{:autocomplete => "off", :name => "options", :type => "radio"}/
+      3
+    %label.btn.btn-default.active
+      %input#option1{:autocomplete => "off", :checked => "true", :name => "options", :type => "radio"}/
+      4
