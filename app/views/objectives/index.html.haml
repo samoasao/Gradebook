@@ -1,0 +1,12 @@
+%p#notice= notice
+%h1 Objectives
+- @objectives.each do |objective|
+  %h4
+    = link_to objective.description, objective
+
+  = link_to 'Edit', edit_objective_path(objective)
+  |
+  = link_to 'Delete', objective, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+%h3
+  = link_to 'New Objective', new_objective_path

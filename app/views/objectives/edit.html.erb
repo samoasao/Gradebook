@@ -1,6 +1,14 @@
-<h1>Editing Objective</h1>
-
-<%= render 'form', objective: @objective %>
-
-<%= link_to 'Show', @objective %> |
-<%= link_to 'Back', objectives_path %>
+= form_with(model: objective, local: true) do |form|
+  - if objective.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(objective.errors.count, "error")
+        prohibited this objective from being saved:
+      %ul
+        - objective.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :description
+    = form.text_field :description, id: :objective_description
+  .actions
+    = form.submit

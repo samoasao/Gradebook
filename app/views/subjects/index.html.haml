@@ -1,0 +1,11 @@
+%p#notice= notice
+%h1 Subjects
+- @subjects.each do |subject|
+  %h4
+    = subject.name
+  = link_to 'Edit', edit_subject_path(subject)
+  |
+  = link_to 'Delete', subject, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+%h3
+  = link_to 'New Subject', new_subject_path

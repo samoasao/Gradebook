@@ -3,7 +3,7 @@
 
     =link_to (fa_icon "chevron-left"), "#"
   
-    = Date.today.strftime("%A, %B %e, %Y %Z")
+    = Date.today.strftime("%A, %B %e, %Y")
     =link_to (fa_icon "chevron-right"), "#"
 
     / TODO: add attributes to this to bootstrap and make it change on command
@@ -37,7 +37,7 @@
                 = render 'score', o: o
   %button.btn-lg.btn-success
     Record Scores
-  %input{:type=>"time", :value=>"#{Time.now.strftime("%k:%M")}"}/
+  %input{:type=>"time", :value=>"#{Time.now.strftime("%H:%M")}"}/
 
             
           
