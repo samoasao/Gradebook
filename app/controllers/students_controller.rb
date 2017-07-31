@@ -1,10 +1,37 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student, only: [:show, :edit, :update, :destroy, :addObjective, :createAssignment, :deleteAssignment]
 
   # GET /students
   # GET /students.json
   def index
     @students = Student.all
+  end
+
+  # GET /students/1/addObjective
+  def addObjective
+
+  end
+
+  # POST /students/1/addObjective
+  def createAssignment
+    @student.objectives << Objective.find(objective_params[:id])
+
+    respond_to do |format|
+      format.html {redirect_to add_objective_to_student_path, notice: 'Assignment was successfully created.' }
+      format.json { head :no_content }
+    end
+  end
+
+  # GET /students/1/deleteObjective <-----SHOULD FIX TO POST
+  def deleteAssignment
+    @assignment = Assignment.find(params[:assignment_id])
+    @assignment.destroy
+    respond_to do |format|
+      format.html {redirect_to add_objective_to_student_path, notice: 'Assignment was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+
+    
   end
 
   
@@ -73,4 +100,9 @@ class StudentsController < ApplicationController
     def student_params
       params.require(:student).permit(:name)
     end
+
+    def objective_params
+      params.require(:objective).permit(:id)
+    end
+
 end

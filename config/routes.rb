@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   	resources :assignments
   end
 
+  get '/students/:id/addObjective', to: 'students#addObjective', as: 'add_objective_to_student'
+  post '/students/:id/addObjective', to: 'students#createAssignment'
+
+  #TODO FIX this right
+  get '/students/:id/deleteAssignment/:assignment_id', to: 'students#deleteAssignment', as: 'delete_objective_from_student'
+
   
 
   get '/dashboard', to: 'dashboard#index', as: 'dashboard'

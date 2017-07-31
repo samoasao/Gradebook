@@ -1,13 +1,23 @@
 %p#notice= notice
 %h2
   = @student.name
-%strong Objectives
-%ul
-  -@student.objectives.each do |obj|
-    %li=obj.description
+-if @student.objectives.size == 0
+  %p
+    %strong No Objectives
+-else
+  %strong Objectives
 
-= link_to 'Add Objective', '#'
+  %ul
+    -@student.objectives.each do |obj|
+      %li 
+        =obj.description
+
+
+
+= link_to 'Add Objective', add_objective_to_student_path
 |
-= link_to 'Edit', edit_student_path(@student)
+= link_to 'Edit Name', edit_student_path(@student)
+|
+= link_to 'Delete Student', @student, method: :delete, data: { confirm: 'Are you sure?' }
 |
 = link_to 'Back', students_path

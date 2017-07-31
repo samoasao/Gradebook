@@ -37,6 +37,7 @@
                 = render 'score', o: o
   %button.btn-lg.btn-success
     Record Scores
+  %input{:type=>"time", :value=>"#{Time.now.strftime("%k:%M")}"}/
 
             
           

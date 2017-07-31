@@ -1,0 +1,13 @@
+%p#notice= notice
+%h1 Add/Delete Objectives for #{@student.name}
+%ul
+-@student.assignments.each do |a|
+  %li
+    = a.objective.description
+    = link_to (fa_icon "trash"), delete_objective_from_student_path(:assignment_id => a.id)
+
+= form_tag do
+  = collection_select(:objective, :id, Objective.all, :id, :description, {:onchange => "this.form.submit()"})
+  = submit_tag("Add",  {:class=>"btn btn-default"}) 
+
+= link_to 'Back', @student
