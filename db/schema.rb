@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170728220324) do
   end
 
   create_table "scores", force: :cascade do |t|
-    t.integer "value"
+    t.float "value"
     t.integer "assignment_id"
     t.integer "schedule_item_id"
     t.index ["assignment_id"], name: "index_scores_on_assignment_id"
