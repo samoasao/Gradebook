@@ -39,4 +39,7 @@ history = Subject.create(name: 'History')
 
 eight = "8:00"
 
-math.schedule_items << ScheduleItem.create(day:Date.today, time:eight)
+math8 = math.schedule_items << ScheduleItem.create(day:Date.today, time:eight)
+
+#FIX THIS OR REMOVE
+Score.create(value: 3, assignment_id:1, schedule_item_id:math.schedule_items.first.id)

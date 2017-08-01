@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170728220324) do
   end
 
   create_table "objectives", force: :cascade do |t|
-    t.string "description"
+    t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 20170728220324) do
 
   create_table "subjects", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

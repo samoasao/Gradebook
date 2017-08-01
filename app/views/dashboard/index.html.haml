@@ -8,6 +8,7 @@
 
     / TODO: add attributes to this to bootstrap and make it change on command
   = form_tag do
+    = label_tag 'subject[id]', 'Subject:'
     -if @selected_subject
       = collection_select(:subject, :id, Subject.all, :id, :name, {:selected => @selected_subject.id, :onchange => "this.form.submit()"})
     -else

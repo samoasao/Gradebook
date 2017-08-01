@@ -14,12 +14,27 @@ class StudentsController < ApplicationController
 
   # POST /students/1/addObjective
   def createAssignment
-    @student.objectives << Objective.find(objective_params[:id])
+    # @student.objectives << Objective.find(objective_params[:id])
+    # Assignment.
 
+    # respond_to do |format|
+    #   format.html {redirect_to add_objective_to_student_path, notice: 'Assignment was successfully created.' }
+    #   format.json { head :no_content }
+    # end
+
+
+    @assignment = Assignment.new(student_id:@student.id, objective_id:objective_params[:id])
     respond_to do |format|
-      format.html {redirect_to add_objective_to_student_path, notice: 'Assignment was successfully created.' }
-      format.json { head :no_content }
+      if @assignment.save
+        format.html { redirect_to add_objective_to_student_path, notice: 'Assignment was successfully created.' }
+        #format.json { render 'students#show', status: :created, location: @assignment.student}
+      else
+        format.html { redirect_to add_objective_to_student_path, notice: 'Student is already assigned that objective.' }
+        #format.json { render json: @student.errors, status: :unprocessable_entity }
+      end
     end
+
+
   end
 
   # GET /students/1/deleteObjective <-----SHOULD FIX TO POST
