@@ -5,6 +5,9 @@
 <table>
   <thead>
     <tr>
+      <th>Student Name</th>
+      <th>Subject</th>
+      <th>Objective</th>
       <th>Value</th>
       <th colspan="3"></th>
     </tr>
@@ -12,7 +15,11 @@
 
   <tbody>
     <% @scores.each do |score| %>
+      <% assignment = score.assignment %>
       <tr>
+        <td><%= assignment.student.name %></td>
+        <td><%= score.schedule_item.subject.name %></td>
+        <td><%= assignment.objective.description %></td>
         <td><%= score.value %></td>
         <td><%= link_to 'Show', score %></td>
         <td><%= link_to 'Edit', edit_score_path(score) %></td>
