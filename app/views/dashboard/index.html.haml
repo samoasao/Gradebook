@@ -32,11 +32,12 @@
               %td.h4{:rowspan => "#{objCount}"}
                 = link_to s.name, student_path(s.id)
               -s.objectives.each do |o|
+                -a = Assignment.where(student_id:"#{s.id}", objective_id:"#{o.id}").first
                 -if o != s.objectives.first
                   %tr
-                    = render partial: 'score', locals: {o: o, f: f}
+                    = render partial: 'score', locals: {o: o, f: f, a:a}
                 -else
-                  = render partial: 'score', locals: {o: o, f: f}
+                  = render partial: 'score', locals: {o: o, f: f, a:a}
     =f.submit "Record Scores", class:"btn btn-lg btn-primary"
     %input{:type=>"time", :value=>"#{Time.now.strftime("%H:%M")}"}/
 

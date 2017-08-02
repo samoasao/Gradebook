@@ -14,6 +14,7 @@ class DashboardController < ApplicationController
   private 
 
   def initnew
+    @assignments = Assignment.all 
     @students = Student.all.order(:name)
     @schedule_item = ScheduleItem.new
     @students.each do |s|
