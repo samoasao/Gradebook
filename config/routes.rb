@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "dashboard#index"
+  resources :schedule_items
   resources :scores
   resources :subjects
   resources :objectives do

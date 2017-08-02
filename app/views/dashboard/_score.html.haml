@@ -1,16 +1,16 @@
 %td
-  = o.description
+  = o.description 
 %td.text-center
   .btn-group-lg{"data-toggle" => "buttons"}
     = label_tag nil, nil, class:'btn btn-default'  do 
-      = radio_button_tag 'options', 1, false, autocomplete: "off"
+      = radio_button_tag "value#{o.id}", 1, false, autocomplete: "off"
       1
     = label_tag nil, nil, class:'btn btn-default'  do 
-      = radio_button_tag 'options', 2, false, autocomplete: "off"
+      = radio_button_tag "value#{o.id}", 2, false, autocomplete: "off"
       2
     = label_tag nil, nil, class:'btn btn-default'  do 
-      = radio_button_tag 'options', 3, false, autocomplete: "off"
+      = radio_button_tag "value#{o.id}", 3, false, autocomplete: "off"
       3
     = label_tag nil, nil, class:'btn btn-default active'  do 
-      = radio_button_tag 'options', 4, false, autocomplete: "off"
+      = radio_button_tag "value#{o.id}", 4, false, autocomplete: "off"
       4
