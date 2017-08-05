@@ -14,7 +14,7 @@ class DashboardController < ApplicationController
   private 
 
   def initnew
-    @assignments = Assignment.all 
+    @assignments = Assignment.joins("inner join students s on assignments.student_id = s.id").order("s.name")
     @students = Student.all.order(:name)
     @schedule_item = ScheduleItem.new
     @students.each do |s|
