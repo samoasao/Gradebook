@@ -1,16 +1,23 @@
 %td
-  = o.description 
+  = a.objective.description
+  = score_form.hidden_field :assignment_id, :value => a.id
+/ %td
+/   =score_form.label :value
+/   =score_form.text_field :value
+
+/ %td
+/   = o.description 
 %td.text-center
   .btn-group-lg{"data-toggle" => "buttons"}
-    = label_tag nil, nil, class:'btn btn-default'  do 
-      = radio_button_tag "value#{a.id}", 1, false, autocomplete: "off"
+    = score_form.label :value, nil, class:'btn btn-default'  do 
+      = score_form.radio_button :value, 1, {checked: false, autocomplete: "off"}
       1
-    = label_tag nil, nil, class:'btn btn-default'  do 
-      = radio_button_tag "value#{a.id}", 2, false, autocomplete: "off"
+    = score_form.label :value, nil, class:'btn btn-default'  do 
+      = score_form.radio_button :value, 2, {checked: false, autocomplete: "off"}
       2
-    = label_tag nil, nil, class:'btn btn-default'  do 
-      = radio_button_tag "value#{a.id}", 3, false, autocomplete: "off"
+    = score_form.label :value, nil, class:'btn btn-default'  do 
+      = score_form.radio_button :value, 3, {checked: false, autocomplete: "off"}
       3
-    = label_tag nil, nil, class:'btn btn-default active'  do 
-      = radio_button_tag "value#{a.id}", 4, false, autocomplete: "off"
+    = score_form.label :value, nil, class:'btn btn-default active'  do 
+      = score_form.radio_button :value, 4, {checked: true, autocomplete: "off"}
       4

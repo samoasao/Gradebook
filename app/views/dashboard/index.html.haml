@@ -28,19 +28,23 @@
         %tbody
           - assign_index = 0
           - last_student_id = -1
+          - objective_index = 0
           = f.fields_for :scores do |score_form|
             - a = @assignments[assign_index]
             - student_id = a.student.id
-            %tr
-              %td
-                = a.student.name
-                =score_form.label :assignment
-                =score_form.text_field :assignment
-              %td
-                = a.objective.description
-              %td
-                =score_form.label :value
-                =score_form.text_field :value
+            - if student_id != last_student_id
+              - last_student_id = student_id
+              %tr
+                %td.h4{:rowspan => "#{a.student.objectives.count}"}
+                  = a.student.name
+
+                = render partial: 'score', locals: {score_form:score_form, a:a}
+
+                
+            - else
+              %tr
+                = render partial: 'score', locals: {score_form:score_form, a:a}
+            
             - assign_index +=  1 
           / - @students.each do |s|
           /   - objCount = s.objectives.count
