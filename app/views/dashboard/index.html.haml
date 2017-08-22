@@ -59,8 +59,10 @@
           /           = render partial: 'score', locals: {o: o, f:f, a:a}
           /       -else
           /         = render partial: 'score', locals: {o: o, f:f, a:a}
+    =f.hidden_field(:subject_id, :value => @selected_subject.id)
+    =f.hidden_field(:day, :value => @day)
+    =f.time_field(:time, :value => "#{Time.now.strftime("%H:%M")}")
     =f.submit "Record Scores", class:"btn btn-lg btn-primary"
-    %input{:type=>"time", :value=>"#{Time.now.strftime("%H:%M")}"}/
 
             
           
