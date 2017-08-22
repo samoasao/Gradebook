@@ -1,8 +1,5 @@
 class ScheduleItemsController < ApplicationController
 	def create
-		# TODO: IMPLEMENT TO RECORD
-		puts "WOWEE!!!"
-
 		@schedule_item = ScheduleItem.new(schedule_item_params)
 
 		puts "Scores " + @schedule_item.scores.last.value.to_s + "!"
