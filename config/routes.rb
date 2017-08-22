@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   
 
   get '/dashboard', to: 'dashboard#index', as: 'dashboard'
+  get '/dashboard/:day', to: 'dashboard#index', as: 'dashboard_day'
   post '/dashboard', to: 'dashboard#getScores'
   post '/', to: 'dashboard#getScores'
 

@@ -22,7 +22,7 @@ class DashboardController < ApplicationController
         @schedule_item.scores.build
       end
     end
-    @day = Date.today
+    setDay
     @subjects = Subject.all
     @selected_subject = Subject.first
   end
@@ -31,4 +31,21 @@ class DashboardController < ApplicationController
   def subject_param
     params.require(:subject).permit(:id)
   end
+
+  def setDay
+    d = params[:day]
+
+    if(d)
+      begin
+        @day = d.to_date
+      rescue ArgumentError
+        @day = Date.today
+      end
+    else
+      @day = Date.today
+    end
+   
+  end
+
+
 end

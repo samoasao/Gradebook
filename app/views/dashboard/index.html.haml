@@ -1,10 +1,12 @@
 .text-center
+  =button_to "Today", dashboard_path, method: :get
   .h2
 
-    =link_to (fa_icon "chevron-left"), "#"
+    =link_to (fa_icon "chevron-left"), dashboard_day_path(@day.yesterday)
   
     = @day.strftime("%A, %B %e, %Y")
-    =link_to (fa_icon "chevron-right"), "#"
+    =link_to (fa_icon "chevron-right"), dashboard_day_path(@day.tomorrow)
+
 
     / TODO: add attributes to this to bootstrap and make it change on command
   = form_tag do
@@ -46,19 +48,6 @@
                 = render partial: 'score', locals: {score_form:score_form, a:a}
             
             - assign_index +=  1 
-          / - @students.each do |s|
-          /   - objCount = s.objectives.count
-          /   %tr
-          /     %td.h4{:rowspan => "{objCount}"}
-          /       = link_to s.name, student_path(s.id)
-
-          /     -s.objectives.each do |o|
-          /       -a = Assignment.where(student_id:"{s.id}", objective_id:"{o.id}").first
-          /       -if o != s.objectives.first
-          /         %tr
-          /           = render partial: 'score', locals: {o: o, f:f, a:a}
-          /       -else
-          /         = render partial: 'score', locals: {o: o, f:f, a:a}
     =f.hidden_field(:subject_id, :value => @selected_subject.id)
     =f.hidden_field(:day, :value => @day)
     =f.time_field(:time, :value => "#{Time.now.strftime("%H:%M")}")
