@@ -8,16 +8,21 @@
 / %td
 /   = o.description 
 %td.text-center
-  .btn-group-lg{"data-toggle" => "buttons"}
-    = score_form.label :value, nil, class:'btn btn-default'  do 
-      = score_form.radio_button :value, 1, {checked: false, autocomplete: "off"}
-      1
-    = score_form.label :value, nil, class:'btn btn-default'  do 
-      = score_form.radio_button :value, 2, {checked: false, autocomplete: "off"}
-      2
-    = score_form.label :value, nil, class:'btn btn-default'  do 
-      = score_form.radio_button :value, 3, {checked: false, autocomplete: "off"}
-      3
-    = score_form.label :value, nil, class:'btn btn-default active'  do 
-      = score_form.radio_button :value, 4, {checked: true, autocomplete: "off"}
-      4
+  - thisScore = si.scores.find_by(assignment: a.id)
+  - if thisScore
+    =score_form.hidden_field(:value, :value => thisScore.value)
+    =thisScore.value
+  - else
+    .btn-group-lg{"data-toggle" => "buttons"}
+      = score_form.label :value, nil, class:'btn btn-default'  do 
+        = score_form.radio_button :value, 1, {checked: false, autocomplete: "off"}
+        1
+      = score_form.label :value, nil, class:'btn btn-default'  do 
+        = score_form.radio_button :value, 2, {checked: false, autocomplete: "off"}
+        2
+      = score_form.label :value, nil, class:'btn btn-default'  do 
+        = score_form.radio_button :value, 3, {checked: false, autocomplete: "off"}
+        3
+      = score_form.label :value, nil, class:'btn btn-default active'  do 
+        = score_form.radio_button :value, 4, {checked: true, autocomplete: "off"}
+        4

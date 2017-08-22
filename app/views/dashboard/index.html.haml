@@ -40,12 +40,12 @@
                 %td.h4{:rowspan => "#{a.student.objectives.count}"}
                   = a.student.name
 
-                = render partial: 'score', locals: {score_form:score_form, a:a}
+                = render partial: 'score', locals: {score_form:score_form, a:a, si: @schedule_item}
 
                 
             - else
               %tr
-                = render partial: 'score', locals: {score_form:score_form, a:a}
+                = render partial: 'score', locals: {score_form:score_form, a:a, si: @schedule_item}
             
             - assign_index +=  1 
     =f.hidden_field(:subject_id, :value => @selected_subject.id)
@@ -54,4 +54,3 @@
     =f.submit "Record Scores", class:"btn btn-lg btn-primary"
 
             
-          
