@@ -1,10 +1,12 @@
 .text-center
   =button_to "Today", dashboard_path, method: :get
+  %input(data-provide="datepicker")
   .h2
 
     =link_to (fa_icon "chevron-left"), dashboard_day_path(@day.yesterday)
   
-    = @day.strftime("%A, %B %e, %Y")
+    =@day.strftime("%A, %B %e, %Y")
+      
     =link_to (fa_icon "chevron-right"), dashboard_day_path(@day.tomorrow)
 
 
