@@ -1,10 +1,18 @@
 class ScoresController < ApplicationController
   before_action :set_score, only: [:show, :edit, :update, :destroy]
 
+  
+
   # GET /scores
   # GET /scores.json
   def index
     @scores = Score.all
+
+    respond_to do |format|
+      format.html
+      format.csv{ render csv: @scores }
+    end
+
   end
 
   # GET /scores/1

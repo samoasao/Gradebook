@@ -30,6 +30,7 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'html2haml'
 gem 'bootstrap-datepicker-rails'
+gem 'spreadsheet_architect'
 
 
 group :development, :test do
